@@ -13,9 +13,6 @@ function getBooksBorrowedCount(books) {
   return borrowedBook.length;
 }
 
-// const namesByAge = accounts.filter((account) => account.age < 25).map((filterdAccount) => filterAccount.fistName);
-// return namesByAge
-
 function getMostCommonGenres(books) {
   const bookGenres = books.reduce((acc, book) => {
     const Genre = book.genre;
@@ -51,6 +48,12 @@ function getMostPopularBooks(books) {
   return result;
 }
 
+function sortAndSpliceHelper(listOfItems, spliceAt) {
+  let sorted = list.sort((a, b) => b.count - a.count);
+  sorted.splice(spliceAt);
+  return sorted;
+}
+
 function getMostPopularAuthors(books, authors) {
   result = authors.map((author) => {
     const fullName = `${author.name.first} ${author.name.last}`;
@@ -69,14 +72,9 @@ function getMostPopularAuthors(books, authors) {
     return topFiveAuthors;
   });
 
-  result.sort((authorA, authorB) => authorB.count - authorA.count);
-  result.splice(5);
-  return result;
+  return sortAndSpliceHelper(result, 5);
 }
 
-//const booksByAuthor = books.filter((book) => if(author.id === book.authorId){
-//   return book.borrows.length
-// })
 module.exports = {
   getTotalBooksCount,
   getTotalAccountsCount,
@@ -85,26 +83,3 @@ module.exports = {
   getMostPopularBooks,
   getMostPopularAuthors,
 };
-
-// //function getMostPopularAuthors(books, authors) {
-//   result = authors.map((author) => {
-//     const firstName = author.name.first;
-//     const lastName = author.name.last;
-//     const fullName = `${firstName} ${lastName}`;
-//     const totalBorrow = books.reduce((total, book) => {
-//       if (author.id === book.authorId) {
-//         total += book.borrows.length;
-//       }
-//       return total;
-//     }, 0);
-//     const topFiveAuthors = {
-//       name: fullName,
-//       count: totalBorrow,
-//     };
-//     return topFiveAuthors;
-//   });
-//   result.sort((bookA, bookB) => bookB.count - bookA.count);
-//   result.splice(5);
-//   console.log(result);
-//   return result;
-// }
