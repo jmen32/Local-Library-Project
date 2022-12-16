@@ -13,9 +13,6 @@ function getBooksBorrowedCount(books) {
   return borrowedBook.length;
 }
 
-// const namesByAge = accounts.filter((account) => account.age < 25).map((filterdAccount) => filterAccount.fistName);
-// return namesByAge
-
 function getMostCommonGenres(books) {
   const bookGenres = books.reduce((acc, book) => {
     const Genre = book.genre;
@@ -34,6 +31,12 @@ function getMostCommonGenres(books) {
   bookGenres.sort((GenreA, GenreB) => GenreB.count - GenreA.count);
   bookGenres.splice(5);
   return bookGenres;
+}
+
+function sortAndSpliceHelper(listOfItems, spliceAt) {
+  let sorted = list.sort((a, b) => b.count - a.count);
+  sorted.splice(spliceAt);
+  return sorted;
 }
 
 function getMostPopularBooks(books) {
@@ -69,14 +72,9 @@ function getMostPopularAuthors(books, authors) {
     return topFiveAuthors;
   });
 
-  result.sort((authorA, authorB) => authorB.count - authorA.count);
-  result.splice(5);
-  return result;
+  return sortAndSpliceHelper(result, 5);
 }
 
-//const booksByAuthor = books.filter((book) => if(author.id === book.authorId){
-//   return book.borrows.length
-// })
 module.exports = {
   getTotalBooksCount,
   getTotalAccountsCount,
