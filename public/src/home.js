@@ -86,25 +86,3 @@ module.exports = {
   getMostPopularAuthors,
 };
 
-// //function getMostPopularAuthors(books, authors) {
-//   result = authors.map((author) => {
-//     const firstName = author.name.first;
-//     const lastName = author.name.last;
-//     const fullName = `${firstName} ${lastName}`;
-//     const totalBorrow = books.reduce((total, book) => {
-//       if (author.id === book.authorId) {
-//         total += book.borrows.length;
-//       }
-//       return total;
-//     }, 0);
-//     const topFiveAuthors = {
-//       name: fullName,
-//       count: totalBorrow,
-//     };
-//     return topFiveAuthors;
-//   });
-//   result.sort((bookA, bookB) => bookB.count - bookA.count);
-//   result.splice(5);
-//   console.log(result);
-//   return result;
-// }
