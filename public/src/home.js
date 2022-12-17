@@ -48,7 +48,7 @@ function getMostPopularBooks(books) {
   return result;
 }
 
-function sortAndSpliceHelper(list, spliceAt) {
+function sortAndSpliceHelper(listOfItems, spliceAt) {
   let sorted = list.sort((a, b) => b.count - a.count);
   sorted.splice(spliceAt);
   return sorted;
